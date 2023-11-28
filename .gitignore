@@ -1,0 +1,6 @@
+data/
+generated/
+node_modules/
+embeddings.pkl
+*.jsonl
+trained_model/*
