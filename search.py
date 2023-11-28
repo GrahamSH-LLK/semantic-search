@@ -3,6 +3,7 @@ import torch
 import json
 import pickle
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 
 embedder = SentenceTransformer('trained_model')
 # populate corpus from json file
@@ -48,8 +49,11 @@ def search(query):
     return hits;
 # use flask to create an api
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/search', methods=['POST'])
+@cross_origin()
 def search_api():
     data = request.get_json()
     query = data['query']
@@ -58,4 +62,5 @@ def search_api():
     return jsonify({'status': 'success', 'data': list(res)})
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=5000, debug=True)
+    app.run(host='localhost', port=5000, debug=False)
+
