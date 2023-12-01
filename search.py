@@ -45,7 +45,7 @@ def search(query):
     hits = util.semantic_search(query_embedding, corpus_embeddings, top_k=5)
     # hits contains dicts of (corpus_id, score)
     # convert corpus_ids to sentences
-    hits = [{'text': corpus[hit['corpus_id']]['rule'], 'score': hit['score']} for hit in hits[0]]
+    hits = [{'text': corpus[hit['corpus_id']]['rule'], 'score': hit['score'], 'textContent': corpus[hit['corpus_id']]['text']} for hit in hits[0]]
     return hits;
 # use flask to create an api
 app = Flask(__name__)
@@ -58,7 +58,6 @@ def search_api():
     data = request.get_json()
     query = data['query']
     res = search(query)
-    print(res)
     return jsonify({'status': 'success', 'data': list(res)})
 
 if __name__ == '__main__':
