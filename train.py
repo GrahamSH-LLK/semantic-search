@@ -2,9 +2,10 @@ import gpl
 
 dataset = 'data'
 gpl.train(
+    
     path_to_generated_data=f"generated/{dataset}",
-    base_ckpt="distilbert-base-uncased",  
-    # base_ckpt='GPL/msmarco-distilbert-margin-mse',  
+    #base_ckpt="distilbert-base-uncased",  
+    base_ckpt='multi-qa-mpnet-base-cos-v1',  
     # The starting checkpoint of the experiments in the paper
     gpl_score_function="dot",
     # Note that GPL uses MarginMSE loss, which works with dot-product
