@@ -1,0 +1,3 @@
+[submodule "rules-search"]
+	path = rules-search
+	url = https://github.com/grahamsh-llk/rules-search.git
