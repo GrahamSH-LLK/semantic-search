@@ -20,7 +20,7 @@ try:
         corpus_embeddings = stored_data['embeddings']
 except:
     corpus = []
-    with open('corpus.json', 'r') as f:
+    with open('rules-search/src/lib/2024.json', 'r') as f:
         corpus_json = json.load(f)
     # print(corpus[0].text)
         # iterate over corpus object and push to list
